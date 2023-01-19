@@ -1,24 +1,15 @@
-type CartState = {
-  cartItems: any[]
-}
-
-type CartAction = {
-  type: string
-  payload: {
-    id: string
-  }
-}
+import { CartAction, CartState, Product } from './cartTypes'
 
 export const cartReducer = (state: CartState, action: CartAction) => {
   const itemExists = state.cartItems.find(
-    (item: any) => item.id === action.payload.id,
+    (item: Product) => item.id === action.payload.id,
   )
   switch (action.type) {
     case 'ADD_TO_CART':
       if (itemExists) {
         return {
           ...state,
-          cartItems: state.cartItems.map((item: any) =>
+          cartItems: state.cartItems.map((item: Product) =>
             item.id === action.payload.id
               ? { ...item, quantity: item.quantity + 1 }
               : item,
@@ -34,13 +25,13 @@ export const cartReducer = (state: CartState, action: CartAction) => {
         return {
           ...state,
           cartItems: state.cartItems.filter(
-            (item: any) => item.id !== action.payload.id,
+            (item: Product) => item.id !== action.payload.id,
           ),
         }
       }
       return {
         ...state,
-        cartItems: state.cartItems.map((item: any) =>
+        cartItems: state.cartItems.map((item: Product) =>
           item.id === action.payload.id
             ? { ...item, quantity: item.quantity - 1 }
             : item,
