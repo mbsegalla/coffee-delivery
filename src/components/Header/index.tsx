@@ -7,7 +7,7 @@ const Header = () => {
     <Container>
       <img src={logo} />
       <IconContainer>
-        <ShoppingCart size={32} weight="fill" />
+        <ShoppingCart size={22} weight="fill" />
       </IconContainer>
     </Container>
   )

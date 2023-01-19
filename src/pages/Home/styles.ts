@@ -1,11 +1,7 @@
 import styled from 'styled-components'
 import backgoundImage from '../../assets/background.png'
 
-export const Container = styled.div`
-  // padding: 32px 160px;
-`
-
-export const Haha = styled.div`
+export const BackgroundContainer = styled.div`
   width: 100%;
   height: 600px;
   position: absolute;
