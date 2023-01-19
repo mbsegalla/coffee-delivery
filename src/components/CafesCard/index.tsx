@@ -14,16 +14,19 @@ import {
   SelectQtyCafes,
   CartButton,
   ButtonsFooter,
+  Button,
+  Title,
+  Image,
 } from './styles'
 
 const CafesCard = () => {
   return (
     <Container>
-      <h2>Nossos cafés</h2>
+      <Title>Nossos cafés</Title>
       <CardArea>
         {cafesData.map((cafe) => (
           <Card key={cafe.id}>
-            <img src={cafe.image} />
+            <Image src={cafe.image} alt={cafe.name} />
             <Tag>
               {cafe.tags.map((tag) => (
                 <CoffeTag key={tag}>{tag}</CoffeTag>
@@ -38,13 +41,13 @@ const CafesCard = () => {
               </div>
               <ButtonsFooter>
                 <SelectQtyCafes>
-                  <button>
+                  <Button>
                     <Minus weight="fill" />
-                  </button>
+                  </Button>
                   <span>0</span>
-                  <button>
+                  <Button>
                     <Plus weight="fill" />
-                  </button>
+                  </Button>
                 </SelectQtyCafes>
                 <CartButton>
                   <ShoppingCart weight="fill" />

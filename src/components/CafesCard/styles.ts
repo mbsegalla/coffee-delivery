@@ -3,13 +3,13 @@ import styled from 'styled-components'
 export const Container = styled.div`
   padding: 32px 160px;
   width: 100%;
+`
 
-  h2 {
-    font-size: 2rem;
-    font-family: 'Baloo 2';
-    font-weight: 800;
-    margin-bottom: 26px;
-  }
+export const Title = styled.h2`
+  font-size: 2rem;
+  font-family: 'Baloo 2';
+  font-weight: 800;
+  margin-bottom: 26px;
 `
 
 export const CardArea = styled.div`
@@ -27,12 +27,12 @@ export const Card = styled.div`
   align-items: center;
   gap: 10px;
   margin: 40px 25px 40px 0;
+`
 
-  img {
-    width: 120px;
-    height: 120px;
-    margin-top: -50px;
-  }
+export const Image = styled.img`
+  width: 120px;
+  height: 120px;
+  margin-top: -50px;
 `
 
 export const Tag = styled.div`
@@ -90,6 +90,11 @@ export const CoffePrice = styled.span`
   height: 100%;
 `
 
+export const ButtonsFooter = styled.div`
+  display: flex;
+  gap: 8px;
+`
+
 export const SelectQtyCafes = styled.div`
   display: flex;
   flex-direction: row;
@@ -102,26 +107,21 @@ export const SelectQtyCafes = styled.div`
   background-color: ${(props) => props.theme['base-button']};
   border-radius: 6px;
 
-  button {
-    display: flex;
-    background-color: ${(props) => props.theme['base-button']};
-    border: 0;
-    cursor: pointer;
-
-    span {
-      color: ${(props) => props.theme['base-title']};
-      font-size: 1rem;
-    }
-
-    svg {
-      color: ${(props) => props.theme.purple};
-    }
+  span {
+    color: ${(props) => props.theme['base-title']};
+    font-size: 1rem;
   }
 `
 
-export const ButtonsFooter = styled.div`
+export const Button = styled.button`
   display: flex;
-  gap: 8px;
+  background-color: ${(props) => props.theme['base-button']};
+  border: 0;
+  cursor: pointer;
+
+  svg {
+    color: ${(props) => props.theme.purple};
+  }
 `
 
 export const CartButton = styled.button`
