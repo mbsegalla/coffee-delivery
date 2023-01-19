@@ -1,16 +1,6 @@
 import { createContext, ReactNode, useReducer } from 'react'
 import { cartReducer } from './cartReducer'
-
-interface CartContextData {
-  cartItems: {
-    id: number
-    name: string
-    price: number
-    quantity: number
-  }[]
-  addToCart: (item: any) => void
-  decrement: (item: any) => void
-}
+import { CartContextData } from './cartTypes'
 
 interface CartProviderProps {
   children: ReactNode
