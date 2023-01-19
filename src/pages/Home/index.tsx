@@ -2,10 +2,10 @@ import Header from '../../components/Header'
 import coffeHomeImage from '../../assets/coffe-home.png'
 import theme from '../../styles/theme'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import CafesCard from '../../components/CafesCard'
 import {
-  Container,
   DescriptionContent,
-  Haha,
+  BackgroundContainer,
   ImageContainer,
   InfoContent,
   RoundedIcon,
@@ -16,8 +16,8 @@ const Home = () => {
   return (
     <>
       <Header />
-      <Container>
-        <Haha />
+      <>
+        <BackgroundContainer />
         <DescriptionContent>
           <TextContainer>
             <h1>Encontre o café perfeito para qualquer hora do dia</h1>
@@ -56,7 +56,8 @@ const Home = () => {
             <img src={coffeHomeImage} />
           </ImageContainer>
         </DescriptionContent>
-      </Container>
+        <CafesCard />
+      </>
     </>
   )
 }
