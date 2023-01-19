@@ -7,9 +7,13 @@ import {
   DescriptionContent,
   BackgroundContainer,
   ImageContainer,
-  InfoContent,
+  InfoContainer,
   RoundedIcon,
   TextContainer,
+  InfoContent,
+  Title,
+  Subtitle,
+  Image,
 } from './styles'
 
 const Home = () => {
@@ -20,40 +24,40 @@ const Home = () => {
         <BackgroundContainer />
         <DescriptionContent>
           <TextContainer>
-            <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-            <p>
+            <Title>Encontre o café perfeito para qualquer hora do dia</Title>
+            <Subtitle>
               Com o Coffe Delivery você recebe seu café onde estiver, a qualquer
               hora.
-            </p>
-            <InfoContent>
-              <span>
+            </Subtitle>
+            <InfoContainer>
+              <InfoContent>
                 <RoundedIcon style={{ backgroundColor: theme['yellow-dark'] }}>
                   <ShoppingCart weight="fill" />
                 </RoundedIcon>
                 Compra simples e segura
-              </span>
-              <span>
+              </InfoContent>
+              <InfoContent>
                 <RoundedIcon style={{ backgroundColor: theme['base-text'] }}>
                   <Package weight="fill" />
                 </RoundedIcon>
                 Embalagem mantém o café intacto
-              </span>
-              <span>
+              </InfoContent>
+              <InfoContent>
                 <RoundedIcon style={{ backgroundColor: theme.yellow }}>
                   <Timer weight="fill" />
                 </RoundedIcon>
                 Entrega rápida e rastreada
-              </span>
-              <span>
+              </InfoContent>
+              <InfoContent>
                 <RoundedIcon style={{ backgroundColor: theme.purple }}>
                   <Coffee weight="fill" />
                 </RoundedIcon>
                 O café chega fresquinho até você
-              </span>
-            </InfoContent>
+              </InfoContent>
+            </InfoContainer>
           </TextContainer>
           <ImageContainer>
-            <img src={coffeHomeImage} />
+            <Image src={coffeHomeImage} alt="" />
           </ImageContainer>
         </DescriptionContent>
         <CafesCard />
