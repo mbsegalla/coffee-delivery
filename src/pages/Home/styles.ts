@@ -1,14 +1,21 @@
 import styled from 'styled-components'
 import backgoundImage from '../../assets/background.png'
 
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+`
+
 export const BackgroundContainer = styled.div`
   width: 100%;
-  height: 600px;
+  height: 550px;
   position: absolute;
   background-image: url(${backgoundImage});
   background-repeat: no-repeat;
   background-size: cover;
-  top: 0;
+  display: flex;
   filter: blur(80px);
 `
 

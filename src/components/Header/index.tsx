@@ -1,14 +1,14 @@
 import { ShoppingCart } from 'phosphor-react'
 import logo from '../../assets/logo.png'
-import { Container, IconContainer } from './styles'
+import { Container, IconButton } from './styles'
 
 const Header = () => {
   return (
     <Container>
       <img src={logo} />
-      <IconContainer>
+      <IconButton title="Ir ao carrinho">
         <ShoppingCart size={22} weight="fill" />
-      </IconContainer>
+      </IconButton>
     </Container>
   )
 }

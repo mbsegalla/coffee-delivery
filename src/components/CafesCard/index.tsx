@@ -1,5 +1,6 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import cafesData from '../../data/cafes'
+import { formatPrice } from '../../utils/formatPrice'
 import {
   Card,
   CardArea,
@@ -17,6 +18,7 @@ import {
   Button,
   Title,
   Image,
+  // CartButtonDefault,
 } from './styles'
 
 const CafesCard = () => {
@@ -24,32 +26,32 @@ const CafesCard = () => {
     <Container>
       <Title>Nossos cafés</Title>
       <CardArea>
-        {cafesData.map((cafe) => (
-          <Card key={cafe.id}>
-            <Image src={cafe.image} alt={cafe.name} />
+        {cafesData.map((coffe) => (
+          <Card key={coffe.id}>
+            <Image src={coffe.image} alt={coffe.name} />
             <Tag>
-              {cafe.tags.map((tag) => (
+              {coffe.tags.map((tag) => (
                 <CoffeTag key={tag}>{tag}</CoffeTag>
               ))}
             </Tag>
-            <CoffeName>{cafe.name}</CoffeName>
-            <CoffeDescription>{cafe.description}</CoffeDescription>
+            <CoffeName>{coffe.name}</CoffeName>
+            <CoffeDescription>{coffe.description}</CoffeDescription>
             <CoffeFooter>
               <div>
                 <RealSign>R$</RealSign>
-                <CoffePrice>{cafe.price}</CoffePrice>
+                <CoffePrice>{formatPrice(coffe.price)}</CoffePrice>
               </div>
               <ButtonsFooter>
                 <SelectQtyCafes>
                   <Button>
                     <Minus weight="fill" />
                   </Button>
-                  <span>0</span>
+                  <span>1</span>
                   <Button>
                     <Plus weight="fill" />
                   </Button>
                 </SelectQtyCafes>
-                <CartButton>
+                <CartButton title="Adicionar no carrinho">
                   <ShoppingCart weight="fill" />
                 </CartButton>
               </ButtonsFooter>
