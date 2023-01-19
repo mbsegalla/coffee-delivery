@@ -121,6 +121,10 @@ export const Button = styled.button`
 
   svg {
     color: ${(props) => props.theme.purple};
+
+    &:hover {
+      color: ${(props) => props.theme['purple-dark']};
+    }
   }
 `
 
@@ -137,9 +141,36 @@ export const CartButton = styled.button`
   background-color: ${(props) => props.theme['purple-dark']};
   border-radius: 6px;
   cursor: pointer;
+  transition: ease-in-out 0.2s;
+
+  &:hover {
+    background-color: ${(props) => props.theme.purple};
+  }
 
   svg {
     color: ${(props) => props.theme.white};
     font-size: 22px;
+  }
+`
+
+export const CartButtonDefault = styled.button`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: ${(props) => props.theme['purple-dark']};
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  font-family: 'Baloo 2';
+  color: ${(props) => props.theme.white};
+  transition: ease-in-out 0.2s;
+
+  &:hover {
+    background-color: ${(props) => props.theme.purple};
+  }
+
+  svg {
+    color: ${(props) => props.theme.white};
   }
 `

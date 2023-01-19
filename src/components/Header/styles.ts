@@ -10,13 +10,9 @@ export const Container = styled.header`
   @media (max-width: 768px) {
     padding: 32px;
   }
-
-  svg {
-    color: ${(props) => props.theme['yellow-dark']};
-  }
 `
 
-export const IconContainer = styled.div`
+export const IconButton = styled.button`
   display: flex;
   background-color: ${(props) => props.theme['yellow-light']};
   border-radius: 6px;
@@ -24,4 +20,20 @@ export const IconContainer = styled.div`
   height: 38px;
   align-items: center;
   justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+
+  &:hover {
+    background-color: ${(props) => props.theme['yellow-dark']};
+
+    svg {
+      color: ${(props) => props.theme['yellow-light']};
+    }
+  }
+
+  svg {
+    color: ${(props) => props.theme['yellow-dark']};
+    transition: ease-in-out 0.2s;
+  }
 `
