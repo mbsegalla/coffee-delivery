@@ -1,45 +1,31 @@
-import { createContext, ReactNode, useReducer } from 'react'
+import { createContext, useEffect, useMemo, useReducer } from 'react'
+import {
+  getFromLocalStorage,
+  setToLocalStorage,
+} from '../../utils/localStorage'
+import { CartContextType, CartProviderProps } from './cart.types'
 import { cartReducer } from './cartReducer'
-import { CartContextData } from './cartTypes'
 
-interface CartProviderProps {
-  children: ReactNode
-}
-
-const initialState: CartContextData = {
-  cartItems: [],
-  addToCart: () => { },
-  decrement: () => { },
-}
-
-export const CartContext = createContext<CartContextData>({
-  cartItems: [],
-  addToCart: () => { },
-  decrement: () => { },
+export const CartContext = createContext<CartContextType>({
+  state: {
+    cartItems: [],
+  },
+  dispatch: () => null,
 })
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const [state, dispatch] = useReducer(cartReducer, initialState)
+  const initialState = getFromLocalStorage('cartItems') || []
+  const [state, dispatch] = useReducer(cartReducer, { cartItems: initialState })
+  const value = useMemo(() => ({ state, dispatch }), [state, dispatch])
 
-  const addToCart = (item: any) => {
-    dispatch({ type: 'ADD_TO_CART', payload: item })
-  }
+  useEffect(() => {
+    const localCartItems = getFromLocalStorage('cartItems')
+    if (!localCartItems) {
+      setToLocalStorage('cartItems', [])
+    }
+  }, [])
 
-  const decrement = (item: any) => {
-    dispatch({ type: 'DECREMENT', payload: item })
-  }
-
-  return (
-    <CartContext.Provider
-      value={{
-        cartItems: state.cartItems,
-        addToCart,
-        decrement,
-      }}
-    >
-      {children}
-    </CartContext.Provider>
-  )
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
 
 export default CartProvider
