@@ -1,7 +1,6 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
-import { useContext } from 'react'
-import { CartContext } from '../../context/Cart/CartContext'
 import cafesData from '../../data/cafes'
+import { useCart } from '../../hooks/useCart'
 import { formatPrice } from '../../utils/formatPrice'
 import {
   Card,
@@ -23,22 +22,18 @@ import {
 } from './styles'
 
 const CafesCard = () => {
-  const { cartItems, addToCart, decrement } = useContext(CartContext)
-
-  const getQuantityById = (id: number) => {
-    const item = cartItems.find((item) => item.id === id)
-    return item ? item.quantity : 0
-  }
+  const { cartItems, addToCart, decrement } = useCart()
+  console.log(cartItems)
 
   return (
     <Container>
       <Title>Nossos cafés</Title>
       <CardArea>
-        {cafesData.map((coffe) => (
+        {cafesData.map((coffe: any) => (
           <Card key={coffe.id}>
             <Image src={coffe.image} alt={coffe.name} />
             <Tag>
-              {coffe.tags.map((tag) => (
+              {coffe.tags.map((tag: any) => (
                 <CoffeTag key={tag}>{tag}</CoffeTag>
               ))}
             </Tag>
@@ -54,7 +49,7 @@ const CafesCard = () => {
                   <Button onClick={() => decrement(coffe)}>
                     <Minus weight="fill" />
                   </Button>
-                  <span>{getQuantityById(coffe.id)}</span>
+                  <span>1</span>
                   <Button onClick={() => addToCart(coffe)}>
                     <Plus weight="fill" />
                   </Button>

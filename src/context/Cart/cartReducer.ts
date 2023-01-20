@@ -1,43 +1,54 @@
-import { CartAction, CartState, Product } from './cartTypes'
+import { setToLocalStorage } from '../../utils/localStorage'
+import { CartAction, CartState, Product } from './cart.types'
 
 export const cartReducer = (state: CartState, action: CartAction) => {
+  const { type, payload } = action
   const itemExists = state.cartItems.find(
-    (item: Product) => item.id === action.payload.id,
+    (item: Product) => item.id === payload.id,
   )
-  switch (action.type) {
+
+  const updateCartItems = (cartItems: Product[]) => {
+    if (itemExists) {
+      return cartItems.map((item: Product) =>
+        item.id === payload.id
+          ? { ...item, quantityInCart: item.quantityInCart + 1 }
+          : item,
+      )
+    }
+    return [...cartItems, { ...payload, quantityInCart: 1 }]
+  }
+
+  const decrementCartItems = (cartItems: Product[]) => {
+    if (itemExists?.quantityInCart === 1) {
+      return cartItems.filter((item: Product) => item.id !== payload.id)
+    }
+    return cartItems.map((item: Product) =>
+      item.id === payload.id
+        ? { ...item, quantityInCart: item.quantityInCart - 1 }
+        : item,
+    )
+  }
+
+  const arrayNewItem = updateCartItems(state.cartItems)
+
+  switch (type) {
     case 'ADD_TO_CART':
-      if (itemExists) {
-        return {
-          ...state,
-          cartItems: state.cartItems.map((item: Product) =>
-            item.id === action.payload.id
-              ? { ...item, quantity: item.quantity + 1 }
-              : item,
-          ),
-        }
-      }
+      setToLocalStorage('cartItems', arrayNewItem)
       return {
         ...state,
-        cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
+        cartItems: updateCartItems(state.cartItems),
       }
     case 'DECREMENT':
-      if (itemExists && itemExists.quantity === 1) {
-        return {
-          ...state,
-          cartItems: state.cartItems.filter(
-            (item: Product) => item.id !== action.payload.id,
-          ),
-        }
-      }
+      setToLocalStorage('cartItems', decrementCartItems(state.cartItems))
       return {
         ...state,
-        cartItems: state.cartItems.map((item: Product) =>
-          item.id === action.payload.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item,
-        ),
+        cartItems: decrementCartItems(state.cartItems),
       }
-
+    case 'UPDATE_CART_ITEMS':
+      return {
+        ...state,
+        cartItems: payload,
+      }
     default:
       return state
   }
