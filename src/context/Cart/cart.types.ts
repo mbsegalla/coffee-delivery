@@ -7,6 +7,7 @@ export interface Product {
   image: string
   tags: string[]
   quantityInCart: number
+  totalPricePerItem: number
 }
 
 export interface CartState {
@@ -14,7 +15,7 @@ export interface CartState {
 }
 
 export interface CartAction {
-  type: 'ADD_TO_CART' | 'DECREMENT' | 'UPDATE_CART_ITEMS'
+  type: 'ADD_TO_CART' | 'DECREMENT' | 'REMOVE_ITEM_FROM_CART'
   payload: any
 }
 
