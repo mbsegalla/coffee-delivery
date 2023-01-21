@@ -95,39 +95,6 @@ export const ButtonsFooter = styled.div`
   gap: 8px;
 `
 
-export const SelectQtyCafes = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-  gap: 4px;
-  width: 72px;
-  height: 38px;
-  background-color: ${(props) => props.theme['base-button']};
-  border-radius: 6px;
-
-  span {
-    color: ${(props) => props.theme['base-title']};
-    font-size: 1rem;
-  }
-`
-
-export const Button = styled.button`
-  display: flex;
-  background-color: ${(props) => props.theme['base-button']};
-  border: 0;
-  cursor: pointer;
-
-  svg {
-    color: ${(props) => props.theme.purple};
-
-    &:hover {
-      color: ${(props) => props.theme['purple-dark']};
-    }
-  }
-`
-
 export const CartButton = styled.button`
   display: flex;
   flex-direction: row;

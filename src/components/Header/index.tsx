@@ -6,7 +6,9 @@ import { Container, IconButton } from './styles'
 const Header = () => {
   return (
     <Container>
-      <img src={logo} />
+      <Link to="/">
+        <img src={logo} alt="" />
+      </Link>
       <Link to="/checkout/cart">
         <IconButton title="Ir ao carrinho">
           <ShoppingCart size={22} weight="fill" />

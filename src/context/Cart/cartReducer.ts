@@ -6,12 +6,19 @@ export const cartReducer = (state: CartState, action: CartAction) => {
   const itemExists = state.cartItems.find(
     (item: Product) => item.id === payload.id,
   )
+  const totalPricePerItem = itemExists
+    ? itemExists?.price * itemExists?.quantityInCart
+    : 0
 
   const updateCartItems = (cartItems: Product[]) => {
     if (itemExists) {
       return cartItems.map((item: Product) =>
         item.id === payload.id
-          ? { ...item, quantityInCart: item.quantityInCart + 1 }
+          ? {
+            ...item,
+            quantityInCart: item.quantityInCart + 1,
+            totalPricePerItem: totalPricePerItem + item.price,
+          }
           : item,
       )
     }
@@ -24,9 +31,17 @@ export const cartReducer = (state: CartState, action: CartAction) => {
     }
     return cartItems.map((item: Product) =>
       item.id === payload.id
-        ? { ...item, quantityInCart: item.quantityInCart - 1 }
+        ? {
+          ...item,
+          quantityInCart: item.quantityInCart - 1,
+          totalPricePerItem: totalPricePerItem - item.price,
+        }
         : item,
     )
+  }
+
+  const removeItemFromCart = (cartItems: Product[]) => {
+    return cartItems.filter((item: Product) => item.id !== payload.id)
   }
 
   const arrayNewItem = updateCartItems(state.cartItems)
@@ -44,10 +59,11 @@ export const cartReducer = (state: CartState, action: CartAction) => {
         ...state,
         cartItems: decrementCartItems(state.cartItems),
       }
-    case 'UPDATE_CART_ITEMS':
+    case 'REMOVE_ITEM_FROM_CART':
+      setToLocalStorage('cartItems', removeItemFromCart(state.cartItems))
       return {
         ...state,
-        cartItems: payload,
+        cartItems: removeItemFromCart(state.cartItems),
       }
     default:
       return state

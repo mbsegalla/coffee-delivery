@@ -1,7 +1,9 @@
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
+import { Product } from '../../context/Cart/cart.types'
 import cafesData from '../../data/cafes'
 import { useCart } from '../../hooks/useCart'
 import { formatPrice } from '../../utils/formatPrice'
+import SelectQtyCafes from '../selectQtyCafes'
 import {
   Card,
   CardArea,
@@ -13,17 +15,27 @@ import {
   RealSign,
   Tag,
   CoffePrice,
-  SelectQtyCafes,
   CartButton,
   ButtonsFooter,
-  Button,
   Title,
   Image,
 } from './styles'
 
 const CafesCard = () => {
-  const { cartItems, addToCart, decrement } = useCart()
-  console.log(cartItems)
+  const { cartState, addToCart, decrement } = useCart()
+
+  const qtyInCart = (coffe: Product) => {
+    const item = cartState.cartItems.find((item) => item.id === coffe.id)
+    return item ? item.quantityInCart : 0
+  }
+
+  const handleAddToCart = (coffe: Product) => {
+    addToCart(coffe)
+  }
+
+  const handleDecrement = (coffe: Product) => {
+    decrement(coffe)
+  }
 
   return (
     <Container>
@@ -45,15 +57,13 @@ const CafesCard = () => {
                 <CoffePrice>{formatPrice(coffe.price)}</CoffePrice>
               </div>
               <ButtonsFooter>
-                <SelectQtyCafes>
-                  <Button onClick={() => decrement(coffe)}>
-                    <Minus weight="fill" />
-                  </Button>
-                  <span>1</span>
-                  <Button onClick={() => addToCart(coffe)}>
-                    <Plus weight="fill" />
-                  </Button>
-                </SelectQtyCafes>
+                <SelectQtyCafes
+                  size="small"
+                  coffe={coffe}
+                  handleDecrement={handleDecrement}
+                  handleAddToCart={handleAddToCart}
+                  qtyInCart={qtyInCart}
+                />
                 <CartButton
                   onClick={() => addToCart(coffe)}
                   title="Adicionar no carrinho"
