@@ -11,7 +11,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <ToastContainer position="top-right" autoClose={5000} theme="colored" />
+      <ToastContainer position="top-center" autoClose={3000} theme="colored" />
       <BrowserRouter>
         <CartProvider>
           <Router />

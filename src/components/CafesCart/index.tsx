@@ -7,8 +7,8 @@ import { formatPrice } from '../../utils/formatPrice'
 import SelectQtyCafes from '../selectQtyCafes'
 import {
   Content,
-  CoffeName,
-  CoffePrice,
+  CoffeeName,
+  CoffeePrice,
   Container,
   ItemsContent,
   ItemsCard,
@@ -35,21 +35,21 @@ const CafesCart = () => {
 
   const totalMoreFee = totalValue + fee
 
-  const handleAddToCart = (coffe: Product) => {
-    addToCart(coffe)
+  const handleAddToCart = (coffee: Product) => {
+    addToCart(coffee)
   }
 
-  const handleDecrement = (coffe: Product) => {
-    decrement(coffe)
+  const handleDecrement = (coffee: Product) => {
+    decrement(coffee)
   }
 
-  const handleRemoveFromCart = (coffe: Product) => {
+  const handleRemoveFromCart = (coffee: Product) => {
     toast.success('Café removido do carrinho!')
-    removeItemFromCart(coffe)
+    removeItemFromCart(coffee)
   }
 
-  const qtyInCart = (coffe: Product) => {
-    const item = cartState.cartItems.find((item) => item.id === coffe.id)
+  const qtyInCart = (coffee: Product) => {
+    const item = cartState.cartItems.find((item) => item.id === coffee.id)
     return item ? item.quantityInCart : 0
   }
 
@@ -57,31 +57,31 @@ const CafesCart = () => {
     <Container>
       <Title>Cafés selecionados</Title>
       <ItemsCard>
-        {cartState.cartItems.map((coffe: Product) => (
-          <React.Fragment key={coffe.id}>
+        {cartState.cartItems.map((coffee: Product) => (
+          <React.Fragment key={coffee.id}>
             <ItemsContainer>
               <ItemsContent>
-                <img src={coffe.image} alt="" width={64} height={64} />
+                <img src={coffee.image} alt="" width={64} height={64} />
                 <Content>
-                  <CoffeName>{coffe.name}</CoffeName>
+                  <CoffeeName>{coffee.name}</CoffeeName>
                   <ButtonsContainer>
                     <SelectQtyCafes
                       size="small"
-                      coffe={coffe}
+                      coffee={coffee}
                       handleDecrement={handleDecrement}
                       handleAddToCart={handleAddToCart}
                       qtyInCart={qtyInCart}
                     />
-                    <RemoveButton onClick={() => handleRemoveFromCart(coffe)}>
+                    <RemoveButton onClick={() => handleRemoveFromCart(coffee)}>
                       <Trash />
                       remover
                     </RemoveButton>
                   </ButtonsContainer>
                 </Content>
               </ItemsContent>
-              <CoffePrice>
-                R$ {formatPrice(coffe.totalPricePerItem || coffe.price)}
-              </CoffePrice>
+              <CoffeePrice>
+                R$ {formatPrice(coffee.totalPricePerItem || coffee.price)}
+              </CoffeePrice>
             </ItemsContainer>
             <Divider />
           </React.Fragment>

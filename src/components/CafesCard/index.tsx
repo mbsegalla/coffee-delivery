@@ -8,14 +8,14 @@ import SelectQtyCafes from '../selectQtyCafes'
 import {
   Card,
   CardArea,
-  CoffeDescription,
-  CoffeName,
-  CoffeFooter,
-  CoffeTag,
+  CoffeeDescription,
+  CoffeeName,
+  CoffeeFooter,
+  CoffeeTag,
   Container,
   RealSign,
   Tag,
-  CoffePrice,
+  CoffeePrice,
   CartButton,
   ButtonsFooter,
   Title,
@@ -25,62 +25,62 @@ import {
 const CafesCard = () => {
   const { cartState, addToCart, decrement } = useCart()
 
-  const qtyInCart = (coffe: Product) => {
-    const item = cartState.cartItems.find((item) => item.id === coffe.id)
+  const qtyInCart = (coffee: Product) => {
+    const item = cartState.cartItems.find((item) => item.id === coffee.id)
     return item ? item.quantityInCart : 0
   }
 
-  const itemExists = (coffe: Product) => {
-    const item = cartState.cartItems.find((item) => item.id === coffe.id)
+  const itemExists = (coffee: Product) => {
+    const item = cartState.cartItems.find((item) => item.id === coffee.id)
     return !!item
   }
 
-  const handleAddToCart = (coffe: Product) => {
-    if (!itemExists(coffe)) {
+  const handleAddToCart = (coffee: Product) => {
+    if (!itemExists(coffee)) {
       toast.success('Café adicionado no carrinho!')
     }
-    addToCart(coffe)
+    addToCart(coffee)
   }
 
-  const handleDecrement = (coffe: Product) => {
-    decrement(coffe)
+  const handleDecrement = (coffee: Product) => {
+    decrement(coffee)
   }
 
   return (
     <Container>
       <Title>Nossos cafés</Title>
       <CardArea>
-        {cafesData.map((coffe: any) => (
-          <Card key={coffe.id}>
-            <Image src={coffe.image} alt={coffe.name} />
+        {cafesData.map((coffee: any) => (
+          <Card key={coffee.id}>
+            <Image src={coffee.image} alt={coffee.name} />
             <Tag>
-              {coffe.tags.map((tag: any) => (
-                <CoffeTag key={tag}>{tag}</CoffeTag>
+              {coffee.tags.map((tag: any) => (
+                <CoffeeTag key={tag}>{tag}</CoffeeTag>
               ))}
             </Tag>
-            <CoffeName>{coffe.name}</CoffeName>
-            <CoffeDescription>{coffe.description}</CoffeDescription>
-            <CoffeFooter>
+            <CoffeeName>{coffee.name}</CoffeeName>
+            <CoffeeDescription>{coffee.description}</CoffeeDescription>
+            <CoffeeFooter>
               <div>
                 <RealSign>R$</RealSign>
-                <CoffePrice>{formatPrice(coffe.price)}</CoffePrice>
+                <CoffeePrice>{formatPrice(coffee.price)}</CoffeePrice>
               </div>
               <ButtonsFooter>
                 <SelectQtyCafes
                   size="large"
-                  coffe={coffe}
+                  coffee={coffee}
                   handleDecrement={handleDecrement}
                   handleAddToCart={handleAddToCart}
                   qtyInCart={qtyInCart}
                 />
                 <CartButton
-                  onClick={() => handleAddToCart(coffe)}
+                  onClick={() => handleAddToCart(coffee)}
                   title="Adicionar no carrinho"
                 >
                   <ShoppingCart weight="fill" />
                 </CartButton>
               </ButtonsFooter>
-            </CoffeFooter>
+            </CoffeeFooter>
           </Card>
         ))}
       </CardArea>
