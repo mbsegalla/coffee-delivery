@@ -1,4 +1,5 @@
 import { ShoppingCart } from 'phosphor-react'
+import { toast } from 'react-toastify'
 import { Product } from '../../context/Cart/cart.types'
 import cafesData from '../../data/cafes'
 import { useCart } from '../../hooks/useCart'
@@ -29,7 +30,15 @@ const CafesCard = () => {
     return item ? item.quantityInCart : 0
   }
 
+  const itemExists = (coffe: Product) => {
+    const item = cartState.cartItems.find((item) => item.id === coffe.id)
+    return !!item
+  }
+
   const handleAddToCart = (coffe: Product) => {
+    if (!itemExists(coffe)) {
+      toast.success('Café adicionado no carrinho!')
+    }
     addToCart(coffe)
   }
 
@@ -58,14 +67,14 @@ const CafesCard = () => {
               </div>
               <ButtonsFooter>
                 <SelectQtyCafes
-                  size="small"
+                  size="large"
                   coffe={coffe}
                   handleDecrement={handleDecrement}
                   handleAddToCart={handleAddToCart}
                   qtyInCart={qtyInCart}
                 />
                 <CartButton
-                  onClick={() => addToCart(coffe)}
+                  onClick={() => handleAddToCart(coffe)}
                   title="Adicionar no carrinho"
                 >
                   <ShoppingCart weight="fill" />

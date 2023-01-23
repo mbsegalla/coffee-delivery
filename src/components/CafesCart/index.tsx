@@ -1,5 +1,6 @@
 import { Trash } from 'phosphor-react'
 import React from 'react'
+import { toast } from 'react-toastify'
 import { Product } from '../../context/Cart/cart.types'
 import { useCart } from '../../hooks/useCart'
 import { formatPrice } from '../../utils/formatPrice'
@@ -43,6 +44,7 @@ const CafesCart = () => {
   }
 
   const handleRemoveFromCart = (coffe: Product) => {
+    toast.success('Café removido do carrinho!')
     removeItemFromCart(coffe)
   }
 
