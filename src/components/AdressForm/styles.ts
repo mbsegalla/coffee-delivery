@@ -30,14 +30,14 @@ export const AdressTitle = styled.h3`
 
   svg {
     margin-right: 8px;
-    font-size: 0.938rem;
+    font-size: 22px;
     color: ${(props) => props.theme['yellow-dark']};
   }
 `
 export const Text = styled.p`
   font-size: 0.875rem;
   color: ${(props) => props.theme['base-text']};
-  margin-left: 25px;
+  margin-left: 30px;
 `
 
 export const Input = styled.input`

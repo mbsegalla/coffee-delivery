@@ -6,3 +6,9 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 32px;
 `
+
+export const Content = styled.div`
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+`
