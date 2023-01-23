@@ -3,9 +3,11 @@ import { CartAction, CartState, Product } from './cart.types'
 
 export const cartReducer = (state: CartState, action: CartAction) => {
   const { type, payload } = action
+
   const itemExists = state.cartItems.find(
     (item: Product) => item.id === payload.id,
   )
+
   const totalPricePerItem = itemExists
     ? itemExists?.price * itemExists?.quantityInCart
     : 0

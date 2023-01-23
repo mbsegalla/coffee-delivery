@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <Container>
       <Link to="/">
-        <img src={logo} alt="" />
+        <img src={logo} alt="" width={84.95} height={40} />
       </Link>
       <Link to="/checkout/cart">
         <IconButton title="Ir ao carrinho">
