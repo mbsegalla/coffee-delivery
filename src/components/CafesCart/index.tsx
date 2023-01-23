@@ -1,7 +1,9 @@
 import { Trash } from 'phosphor-react'
-import React from 'react'
+import React, { useContext } from 'react'
 import { toast } from 'react-toastify'
+import { AdressContext } from '../../context/Adress/AdressContext'
 import { Product } from '../../context/Cart/cart.types'
+import { PaymentMethodContext } from '../../context/PaymentMethod/PaymentMethodContext'
 import { useCart } from '../../hooks/useCart'
 import { formatPrice } from '../../utils/formatPrice'
 import SelectQtyCafes from '../selectQtyCafes'
@@ -27,6 +29,10 @@ import {
 
 const CafesCart = () => {
   const { cartState, addToCart, decrement, removeItemFromCart } = useCart()
+  const { adress } = useContext(AdressContext)
+  console.log('adress', adress)
+  const { paymentMethod } = useContext(PaymentMethodContext)
+  console.log('paymentMethod', paymentMethod)
   const fee = 3.5
   const totalValue = cartState.cartItems.reduce(
     (acc, item: Product) => acc + item.price * item.quantityInCart,
