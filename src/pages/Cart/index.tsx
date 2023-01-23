@@ -1,8 +1,9 @@
 import { AdressForm } from '../../components/AdressForm'
 import CafesCart from '../../components/CafesCart'
+import PaymentMethod from '../../components/PaymentMethod'
 import { useCart } from '../../hooks/useCart'
 import EmptyCart from './components/EmptyCart'
-import { Container } from './styles'
+import { Container, Content } from './styles'
 
 const Cart = () => {
   const { cartState } = useCart()
@@ -13,7 +14,10 @@ const Cart = () => {
 
   return (
     <Container>
-      <AdressForm />
+      <Content>
+        <AdressForm />
+        <PaymentMethod />
+      </Content>
       <CafesCart />
     </Container>
   )
