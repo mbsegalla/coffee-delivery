@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
+import { PaymentMethodContext } from '../../context/PaymentMethod/PaymentMethodContext'
 import {
   PaymentMethodBase,
   PaymentMethodButton,
@@ -9,7 +10,7 @@ import {
 } from './styles'
 
 const PaymentMethod = () => {
-  const [paymentMethod, setPaymentMethod] = useState('')
+  const { paymentMethod, setPaymentMethod } = useContext(PaymentMethodContext)
 
   const handlePaymentMethod = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { value } = event.currentTarget
