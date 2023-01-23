@@ -4,7 +4,7 @@ import { Button, Container } from './styles'
 
 interface SelectQtyCafesProps {
   size: string
-  coffe: Product
+  coffee: Product
   handleDecrement: (coffe: Product) => void
   handleAddToCart: (coffe: Product) => void
   qtyInCart: (coffe: Product) => number
@@ -12,18 +12,18 @@ interface SelectQtyCafesProps {
 
 const SelectQtyCafes = ({
   size,
-  coffe,
+  coffee,
   handleDecrement,
   handleAddToCart,
   qtyInCart,
 }: SelectQtyCafesProps) => {
   return (
     <Container size={size}>
-      <Button onClick={() => handleDecrement(coffe)}>
+      <Button onClick={() => handleDecrement(coffee)}>
         <Minus weight="fill" />
       </Button>
-      <span>{qtyInCart(coffe)}</span>
-      <Button onClick={() => handleAddToCart(coffe)}>
+      <span>{qtyInCart(coffee)}</span>
+      <Button onClick={() => handleAddToCart(coffee)}>
         <Plus weight="fill" />
       </Button>
     </Container>

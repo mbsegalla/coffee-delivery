@@ -32,7 +32,7 @@ export const ItemsContainer = styled.div`
   gap: 59px;
 `
 
-export const CoffeName = styled.span`
+export const CoffeeName = styled.span`
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -41,7 +41,7 @@ export const CoffeName = styled.span`
   color: ${(props) => props.theme['base-subtitle']};
 `
 
-export const CoffePrice = styled.span`
+export const CoffeePrice = styled.span`
   color: ${(props) => props.theme['base-text']};
   font-weight: 700;
 `

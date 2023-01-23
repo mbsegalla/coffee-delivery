@@ -1,4 +1,4 @@
-import coffeHomeImage from '../../assets/coffe-home.png'
+import coffeeHomeImage from '../../assets/coffee-home.png'
 import theme from '../../styles/theme'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import CafesCard from '../../components/CafesCard'
@@ -25,8 +25,8 @@ const Home = () => {
           <TextContainer>
             <Title>Encontre o café perfeito para qualquer hora do dia</Title>
             <Subtitle>
-              Com o Coffe Delivery você recebe seu café onde estiver, a qualquer
-              hora.
+              Com o Coffee Delivery você recebe seu café onde estiver, a
+              qualquer hora.
             </Subtitle>
             <InfoContainer>
               <InfoContent>
@@ -56,7 +56,7 @@ const Home = () => {
             </InfoContainer>
           </TextContainer>
           <ImageContainer>
-            <Image src={coffeHomeImage} alt="" />
+            <Image src={coffeeHomeImage} alt="" />
           </ImageContainer>
         </DescriptionContent>
       </Container>

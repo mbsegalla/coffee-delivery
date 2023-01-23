@@ -41,7 +41,7 @@ export const Tag = styled.div`
   padding: 12px 0 16px 0;
 `
 
-export const CoffeTag = styled.span`
+export const CoffeeTag = styled.span`
   text-transform: uppercase;
   font-size: 0.625rem;
   font-family: 'Roboto';
@@ -52,14 +52,14 @@ export const CoffeTag = styled.span`
   border-radius: 100px;
 `
 
-export const CoffeName = styled.span`
+export const CoffeeName = styled.span`
   font-size: 1.25rem;
   font-family: 'Baloo 2';
   font-weight: 700;
   color: ${(props) => props.theme['base-subtitle']};
 `
 
-export const CoffeDescription = styled.p`
+export const CoffeeDescription = styled.p`
   font-size: 0.875rem;
   font-family: 'Roboto';
   color: ${(props) => props.theme['base-label']};
@@ -68,7 +68,7 @@ export const CoffeDescription = styled.p`
   margin-bottom: 33px;
 `
 
-export const CoffeFooter = styled.div`
+export const CoffeeFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +82,7 @@ export const RealSign = styled.span`
   font-family: 'Roboto';
 `
 
-export const CoffePrice = styled.span`
+export const CoffeePrice = styled.span`
   color: ${(props) => props.theme['base-subtitle']};
   font-size: 1.75rem;
   font-weight: 700;
