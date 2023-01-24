@@ -2,11 +2,15 @@ import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { useContext } from 'react'
 import { OrderContext } from '../../contexts/Order/OrderContext'
 import delivery from '../../assets/delivery.png'
+import theme from '../../styles/theme'
 import {
   Container,
   Content,
   ContentText,
+  Info,
+  InfoContent,
   OrderInfoCard,
+  OrderInfoCardContainer,
   RoundedIcon,
   Text,
   Title,
@@ -20,56 +24,48 @@ const ConfirmedOrder = () => {
     <Container>
       <Title>Uhu! Pedido confirmado</Title>
       <Text>Agora é só aguardar que logo o café chegará até você</Text>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
+      <OrderInfoCardContainer>
         <OrderInfoCard>
           <Content>
-            <div>
-              <RoundedIcon style={{ backgroundColor: '#8047F8' }}>
+            <InfoContent>
+              <RoundedIcon style={{ backgroundColor: theme.purple }}>
                 <MapPin weight="fill" />
               </RoundedIcon>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                }}
-              >
+              <Info>
                 <ContentText>
                   Entrega em <strong>Avenida salomão abraão, 2453</strong>
                 </ContentText>
                 <span>Uberlândia - Minas Gerais, MG</span>
-              </div>
-            </div>
-            <div>
-              <RoundedIcon style={{ backgroundColor: '#DBAC2C' }}>
+              </Info>
+            </InfoContent>
+            <InfoContent>
+              <RoundedIcon style={{ backgroundColor: theme.yellow }}>
                 <Timer weight="fill" />
               </RoundedIcon>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <Info>
                 <ContentText>Previsão de entrega</ContentText>
-                <span>20 min - 30 min</span>
-              </div>
-            </div>
-            <div>
-              <RoundedIcon style={{ backgroundColor: '#C47F17' }}>
+                <span>
+                  <strong>20 min - 30 min</strong>
+                </span>
+              </Info>
+            </InfoContent>
+            <InfoContent>
+              <RoundedIcon style={{ backgroundColor: theme['yellow-dark'] }}>
                 <CurrencyDollar weight="fill" />
               </RoundedIcon>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <Info>
                 <ContentText>Pagamento na entrega</ContentText>
-                <span>Cartão de crédito</span>
-              </div>
-            </div>
+                <span>
+                  <strong>Cartão de crédito</strong>
+                </span>
+              </Info>
+            </InfoContent>
           </Content>
         </OrderInfoCard>
         <div>
           <img src={delivery} />
         </div>
-      </div>
+      </OrderInfoCardContainer>
     </Container>
   )
 }

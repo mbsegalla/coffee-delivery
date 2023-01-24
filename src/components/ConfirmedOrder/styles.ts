@@ -44,14 +44,13 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-
-  div {
-    display: flex;
-    align-items: center;
-  }
 `
 
-export const ContentText = styled.p``
+export const ContentText = styled.p`
+  font-family: 'Roboto';
+  color: ${(props) => props.theme['base-text']};
+  font-size: 1rem;
+`
 
 export const RoundedIcon = styled.div`
   width: 32px;
@@ -64,4 +63,26 @@ export const RoundedIcon = styled.div`
   svg {
     color: ${(props) => props.theme.white};
   }
+`
+
+export const OrderInfoCardContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+
+  span {
+    font-family: 'Roboto';
+    color: ${(props) => props.theme['base-text']};
+  }
+`
+export const InfoContent = styled.div`
+  gap: 12px;
+  display: flex;
+  align-items: center;
 `
