@@ -1,9 +1,10 @@
 import { Trash } from 'phosphor-react'
 import React, { useContext } from 'react'
 import { toast } from 'react-toastify'
-import { AdressContext } from '../../context/Adress/AdressContext'
-import { Product } from '../../context/Cart/cart.types'
-import { PaymentMethodContext } from '../../context/PaymentMethod/PaymentMethodContext'
+import { AdressContext } from '../../contexts/Adress/AdressContext'
+import { Product } from '../../contexts/Cart/cart.types'
+import { PaymentMethodContext } from '../../contexts/PaymentMethod/PaymentMethodContext'
+import { OrderContext } from '../../contexts/Order/OrderContext'
 import { useCart } from '../../hooks/useCart'
 import { formatPrice } from '../../utils/formatPrice'
 import SelectQtyCafes from '../selectQtyCafes'
@@ -30,9 +31,9 @@ import {
 const CafesCart = () => {
   const { cartState, addToCart, decrement, removeItemFromCart } = useCart()
   const { adress } = useContext(AdressContext)
-  console.log('adress', adress)
   const { paymentMethod } = useContext(PaymentMethodContext)
-  console.log('paymentMethod', paymentMethod)
+  const { orders, newOrder } = useContext(OrderContext)
+  console.log(orders)
   const fee = 3.5
   const totalValue = cartState.cartItems.reduce(
     (acc, item: Product) => acc + item.price * item.quantityInCart,
@@ -57,6 +58,23 @@ const CafesCart = () => {
   const qtyInCart = (coffee: Product) => {
     const item = cartState.cartItems.find((item) => item.id === coffee.id)
     return item ? item.quantityInCart : 0
+  }
+
+  const handleConfirm = () => {
+    if (!adress) {
+      toast.error('Selecione um endereço!')
+    } else if (!paymentMethod) {
+      toast.error('Selecione um método de pagamento!')
+    }
+    if (adress && paymentMethod) {
+      const data = {
+        id: 1,
+        adress,
+        paymentMethod,
+        items: cartState.cartItems,
+      }
+      newOrder(data)
+    }
   }
 
   return (
@@ -106,7 +124,9 @@ const CafesCart = () => {
             <Total>R$ {formatPrice(totalMoreFee)}</Total>
           </InfoPayment>
         </Haha>
-        <ConfirmButton>Confirmar pedido</ConfirmButton>
+        <ConfirmButton onClick={() => handleConfirm()}>
+          Confirmar pedido
+        </ConfirmButton>
       </ItemsCard>
     </Container>
   )

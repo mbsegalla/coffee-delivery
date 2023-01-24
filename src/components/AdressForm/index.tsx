@@ -1,6 +1,6 @@
 import { MapPinLine } from 'phosphor-react'
 import React, { useContext } from 'react'
-import { AdressContext } from '../../context/Adress/AdressContext'
+import { AdressContext } from '../../contexts/Adress/AdressContext'
 import {
   AdressCard,
   AdressContainer,

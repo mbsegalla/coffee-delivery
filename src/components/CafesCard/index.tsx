@@ -1,6 +1,6 @@
 import { ShoppingCart } from 'phosphor-react'
 import { toast } from 'react-toastify'
-import { Product } from '../../context/Cart/cart.types'
+import { Product } from '../../contexts/Cart/cart.types'
 import cafesData from '../../data/cafes'
 import { useCart } from '../../hooks/useCart'
 import { formatPrice } from '../../utils/formatPrice'

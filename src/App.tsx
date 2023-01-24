@@ -1,13 +1,14 @@
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import CartProvider from './context/Cart/CartContext'
+import CartProvider from './contexts/Cart/CartContext'
 import Router from './Router'
 import { GlobalStyles } from './styles/globalStyles'
 import theme from './styles/theme'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { AdressProvider } from './context/Adress/AdressContext'
-import { PaymentMethodProvider } from './context/PaymentMethod/PaymentMethodContext'
+import { AdressProvider } from './contexts/Adress/AdressContext'
+import { PaymentMethodProvider } from './contexts/PaymentMethod/PaymentMethodContext'
+import { OrderProvider } from './contexts/Order/OrderContext'
 
 const App = () => {
   return (
@@ -18,7 +19,9 @@ const App = () => {
         <CartProvider>
           <AdressProvider>
             <PaymentMethodProvider>
-              <Router />
+              <OrderProvider>
+                <Router />
+              </OrderProvider>
             </PaymentMethodProvider>
           </AdressProvider>
         </CartProvider>

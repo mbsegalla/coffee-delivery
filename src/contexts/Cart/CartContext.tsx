@@ -6,12 +6,7 @@ import {
 import { CartContextType, CartProviderProps } from './cart.types'
 import { cartReducer } from './cartReducer'
 
-export const CartContext = createContext<CartContextType>({
-  state: {
-    cartItems: [],
-  },
-  dispatch: () => null,
-})
+export const CartContext = createContext({} as CartContextType)
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   const initialState = getFromLocalStorage('cartItems') || []
