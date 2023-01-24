@@ -5,10 +5,9 @@ interface PaymentMethodContextType {
   setPaymentMethod: (paymentMethod: string) => void
 }
 
-export const PaymentMethodContext = createContext<PaymentMethodContextType>({
-  paymentMethod: '',
-  setPaymentMethod: () => String,
-})
+export const PaymentMethodContext = createContext(
+  {} as PaymentMethodContextType,
+)
 
 export const PaymentMethodProvider = ({ children }: any) => {
   const [paymentMethod, setPaymentMethod] = useState('')

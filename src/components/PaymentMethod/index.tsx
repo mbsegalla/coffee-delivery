@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
-import { PaymentMethodContext } from '../../context/PaymentMethod/PaymentMethodContext'
+import { PaymentMethodContext } from '../../contexts/PaymentMethod/PaymentMethodContext'
 import {
   PaymentMethodBase,
   PaymentMethodButton,

@@ -19,10 +19,7 @@ interface AdressContextType {
   setAdress: (adress: Adress) => void
 }
 
-export const AdressContext = React.createContext<AdressContextType>({
-  adress: {} as Adress,
-  setAdress: () => {},
-})
+export const AdressContext = React.createContext({} as AdressContextType)
 
 export const AdressProvider = ({ children }: AdressProviderProps) => {
   const [adress, setAdress] = useState<Adress>({

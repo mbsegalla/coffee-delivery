@@ -1,5 +1,5 @@
 import { Minus, Plus } from 'phosphor-react'
-import { Product } from '../../context/Cart/cart.types'
+import { Product } from '../../contexts/Cart/cart.types'
 import { Button, Container } from './styles'
 
 interface SelectQtyCafesProps {
