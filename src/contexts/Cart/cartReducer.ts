@@ -67,6 +67,12 @@ export const cartReducer = (state: CartState, action: CartAction) => {
         ...state,
         cartItems: removeItemFromCart(state.cartItems),
       }
+    case 'CLEAR_CART':
+      setToLocalStorage('cartItems', [])
+      return {
+        ...state,
+        cartItems: [],
+      }
     default:
       return state
   }

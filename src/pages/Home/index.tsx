@@ -15,17 +15,8 @@ import {
   Image,
   Container,
 } from './styles'
-import { useEffect } from 'react'
 
 const Home = () => {
-  useEffect(() => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position)
-      })
-    }
-  }, [])
-
   return (
     <>
       <Container>
