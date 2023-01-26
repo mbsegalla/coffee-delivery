@@ -1,10 +1,10 @@
 import { Trash } from 'phosphor-react'
 import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { AdressContext } from '../../contexts/Adress/AdressContext'
 import { Product } from '../../contexts/Cart/cart.types'
 import { PaymentMethodContext } from '../../contexts/PaymentMethod/PaymentMethodContext'
-import { OrderContext } from '../../contexts/Order/OrderContext'
 import { useCart } from '../../hooks/useCart'
 import { formatPrice } from '../../utils/formatPrice'
 import SelectQtyCafes from '../selectQtyCafes'
@@ -32,13 +32,13 @@ const CafesCart = () => {
   const { cartState, addToCart, decrement, removeItemFromCart } = useCart()
   const { adress } = useContext(AdressContext)
   const { paymentMethod } = useContext(PaymentMethodContext)
-  const { orders, newOrder } = useContext(OrderContext)
-  console.log(orders)
   const fee = 3.5
   const totalValue = cartState.cartItems.reduce(
     (acc, item: Product) => acc + item.price * item.quantityInCart,
     0,
   )
+  const navigate = useNavigate()
+  console.log(history)
 
   const totalMoreFee = totalValue + fee
 
@@ -67,13 +67,7 @@ const CafesCart = () => {
       toast.error('Selecione um método de pagamento!')
     }
     if (adress && paymentMethod) {
-      const data = {
-        id: 1,
-        adress,
-        paymentMethod,
-        items: cartState.cartItems,
-      }
-      newOrder(data)
+      navigate('/success')
     }
   }
 
