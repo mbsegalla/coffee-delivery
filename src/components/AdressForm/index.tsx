@@ -67,7 +67,7 @@ export const AdressForm = () => {
           />
           <Input
             type="text"
-            name="state"
+            name="uf"
             placeholder="UF"
             onChange={handleChange}
           />

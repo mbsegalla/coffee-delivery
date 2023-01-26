@@ -1,7 +1,8 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { useContext } from 'react'
-import { OrderContext } from '../../contexts/Order/OrderContext'
 import delivery from '../../assets/delivery.png'
+import { AdressContext } from '../../contexts/Adress/AdressContext'
+import { PaymentMethodContext } from '../../contexts/PaymentMethod/PaymentMethodContext'
 import theme from '../../styles/theme'
 import {
   Container,
@@ -17,8 +18,10 @@ import {
 } from './styles'
 
 const ConfirmedOrder = () => {
-  const { orders } = useContext(OrderContext)
-  console.log(orders)
+  const { adress } = useContext(AdressContext)
+  const { paymentMethod } = useContext(PaymentMethodContext)
+  console.log(adress)
+  console.log(paymentMethod)
 
   return (
     <Container>

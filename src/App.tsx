@@ -8,7 +8,6 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { AdressProvider } from './contexts/Adress/AdressContext'
 import { PaymentMethodProvider } from './contexts/PaymentMethod/PaymentMethodContext'
-import { OrderProvider } from './contexts/Order/OrderContext'
 
 const App = () => {
   return (
@@ -16,15 +15,13 @@ const App = () => {
       <GlobalStyles />
       <ToastContainer position="top-center" autoClose={3000} theme="colored" />
       <BrowserRouter>
-        <CartProvider>
+        <PaymentMethodProvider>
           <AdressProvider>
-            <PaymentMethodProvider>
-              <OrderProvider>
-                <Router />
-              </OrderProvider>
-            </PaymentMethodProvider>
+            <CartProvider>
+              <Router />
+            </CartProvider>
           </AdressProvider>
-        </CartProvider>
+        </PaymentMethodProvider>
       </BrowserRouter>
     </ThemeProvider>
   )
