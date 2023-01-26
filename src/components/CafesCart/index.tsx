@@ -7,6 +7,7 @@ import { Product } from '../../contexts/Cart/cart.types'
 import { PaymentMethodContext } from '../../contexts/PaymentMethod/PaymentMethodContext'
 import { useCart } from '../../hooks/useCart'
 import { formatPrice } from '../../utils/formatPrice'
+import { setToLocalStorage } from '../../utils/localStorage'
 import SelectQtyCafes from '../selectQtyCafes'
 import {
   Content,
@@ -29,7 +30,8 @@ import {
 } from './styles'
 
 const CafesCart = () => {
-  const { cartState, addToCart, decrement, removeItemFromCart } = useCart()
+  const { cartState, addToCart, decrement, removeItemFromCart, clearCart } =
+    useCart()
   const { adress } = useContext(AdressContext)
   const { paymentMethod } = useContext(PaymentMethodContext)
   const fee = 3.5
@@ -38,7 +40,6 @@ const CafesCart = () => {
     0,
   )
   const navigate = useNavigate()
-  console.log(history)
 
   const totalMoreFee = totalValue + fee
 
@@ -68,6 +69,7 @@ const CafesCart = () => {
     }
     if (adress && paymentMethod) {
       navigate('/success')
+      clearCart()
     }
   }
 

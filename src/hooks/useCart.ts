@@ -31,8 +31,12 @@ export const useCart = () => {
     [dispatch],
   )
 
+  const clearCart = useCallback(() => {
+    dispatch({ type: 'CLEAR_CART', payload: [] })
+  }, [dispatch])
+
   return useMemo(
-    () => ({ cartState, addToCart, decrement, removeItemFromCart }),
-    [cartState, addToCart, decrement, removeItemFromCart],
+    () => ({ cartState, addToCart, decrement, removeItemFromCart, clearCart }),
+    [cartState, addToCart, decrement, removeItemFromCart, clearCart],
   )
 }

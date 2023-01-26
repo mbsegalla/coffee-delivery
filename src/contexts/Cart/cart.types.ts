@@ -15,7 +15,7 @@ export interface CartState {
 }
 
 export interface CartAction {
-  type: 'ADD_TO_CART' | 'DECREMENT' | 'REMOVE_ITEM_FROM_CART'
+  type: 'ADD_TO_CART' | 'DECREMENT' | 'REMOVE_ITEM_FROM_CART' | 'CLEAR_CART'
   payload: any
 }
 

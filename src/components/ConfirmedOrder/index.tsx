@@ -1,9 +1,10 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import delivery from '../../assets/delivery.png'
 import { AdressContext } from '../../contexts/Adress/AdressContext'
 import { PaymentMethodContext } from '../../contexts/PaymentMethod/PaymentMethodContext'
 import theme from '../../styles/theme'
+import { translatePaymentMethod } from '../../utils/translatePaymentMethod'
 import {
   Container,
   Content,
@@ -20,8 +21,21 @@ import {
 const ConfirmedOrder = () => {
   const { adress } = useContext(AdressContext)
   const { paymentMethod } = useContext(PaymentMethodContext)
-  console.log(adress)
-  console.log(paymentMethod)
+
+  const district = adress?.district
+  const street = adress?.street
+  const number = adress?.number
+  const city = adress?.city
+  const uf = adress?.uf
+  const paymentMethodText = paymentMethod
+
+  useEffect(() => {
+    const entries = performance.getEntriesByType('navigation')
+    const type = entries.map((nav) => nav.type)
+    if (type[0] === 'reload') {
+      window.location.href = '/'
+    }
+  }, [])
 
   return (
     <Container>
@@ -36,9 +50,9 @@ const ConfirmedOrder = () => {
               </RoundedIcon>
               <Info>
                 <ContentText>
-                  Entrega em <strong>Avenida salomão abraão, 2453</strong>
+                  Entrega em <strong>{`${street}, ${number}`}</strong>
                 </ContentText>
-                <span>Uberlândia - Minas Gerais, MG</span>
+                <span>{`${district} - ${city}, ${uf}`}</span>
               </Info>
             </InfoContent>
             <InfoContent>
@@ -59,7 +73,7 @@ const ConfirmedOrder = () => {
               <Info>
                 <ContentText>Pagamento na entrega</ContentText>
                 <span>
-                  <strong>Cartão de crédito</strong>
+                  <strong>{translatePaymentMethod(paymentMethodText)}</strong>
                 </span>
               </Info>
             </InfoContent>

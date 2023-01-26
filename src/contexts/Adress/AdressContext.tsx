@@ -11,7 +11,7 @@ interface Adress {
   number: string
   district: string
   city: string
-  state: string
+  uf: string
 }
 
 interface AdressContextType {
@@ -29,7 +29,7 @@ export const AdressProvider = ({ children }: AdressProviderProps) => {
     number: '',
     district: '',
     city: '',
-    state: '',
+    uf: '',
   })
 
   return (

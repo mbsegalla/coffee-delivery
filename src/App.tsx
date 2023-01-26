@@ -15,13 +15,13 @@ const App = () => {
       <GlobalStyles />
       <ToastContainer position="top-center" autoClose={3000} theme="colored" />
       <BrowserRouter>
-        <PaymentMethodProvider>
-          <AdressProvider>
-            <CartProvider>
+        <CartProvider>
+          <PaymentMethodProvider>
+            <AdressProvider>
               <Router />
-            </CartProvider>
-          </AdressProvider>
-        </PaymentMethodProvider>
+            </AdressProvider>
+          </PaymentMethodProvider>
+        </CartProvider>
       </BrowserRouter>
     </ThemeProvider>
   )
