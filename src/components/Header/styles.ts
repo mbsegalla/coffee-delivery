@@ -6,10 +6,6 @@ export const Container = styled.header`
   width: 100%;
   justify-content: space-between;
   padding: 32px 160px;
-
-  @media (max-width: 768px) {
-    padding: 32px;
-  }
 `
 
 export const IconButton = styled.button`
