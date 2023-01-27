@@ -23,12 +23,20 @@ export const DescriptionContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const TextContainer = styled.div`
   padding: 32px 0 32px 160px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 1200px) {
+    padding: 32px 160px;
+  }
 `
 
 export const Title = styled.h1`
@@ -85,4 +93,8 @@ export const Image = styled.img`
   width: 476px;
   height: 360px;
   z-index: 9999999;
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `

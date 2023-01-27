@@ -31,7 +31,7 @@ const ConfirmedOrder = () => {
 
   useEffect(() => {
     const entries = performance.getEntriesByType('navigation')
-    const type = entries.map((nav) => nav.type)
+    const type = entries.map((nav: any) => nav.type)
     if (type[0] === 'reload') {
       window.location.href = '/'
     }
